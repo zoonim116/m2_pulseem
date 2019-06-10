@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="pulseem" translate="label" sortOrder="10">
+            <label>Pulseem</label>
+        </tab>
+        <section id="pulseemconfig" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>General Configuration</label>
+            <tab>pulseem</tab>
+            <resource>Modzi_Pulseem::pulseen_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="api_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API key:</label>
+                    <comment>Enter API key.</comment>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="registered_user_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sign in integration settings</label>
+                <field id="add_new_user" translate="label" sortOrder="2" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add new user to group list ?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="add_new_user_category" translate="label" sortOrder="3" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New client group:</label>
+                    <source_model>Modzi\Pulseem\Model\Config\Source\Group</source_model>
+                    <comment>Choose new client group.</comment>
+                    <depends>
+                        <field id="add_new_user">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="checkout_user_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Checkout integration settings</label>
+                <field id="add_user_after_purchase" translate="label" sortOrder="4" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add user to group list after purchase ?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="add_user_after_purchase_category" translate="label" sortOrder="5" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New client group:</label>
+                    <source_model>Modzi\Pulseem\Model\Config\Source\Group</source_model>
+                    <comment>Choose purchased user group.</comment>
+                    <depends>
+                        <field id="add_user_after_purchase">1</field>
+                    </depends>
+                </field>
+                <field id="show_agreement_on_checkout_page" translate="label" sortOrder="6" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show  ?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="add_user_after_purchase">1</field>
+                    </depends>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Agreement text for checkbox:</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="show_agreement_on_checkout_page">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

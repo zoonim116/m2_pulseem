@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_register_success">
+        <observer name="customer_register_observer" instance="Modzi\Pulseem\Observer\PulseemSubmitRegistrationData" />
+    </event>
+    <event name="checkout_submit_all_after">
+        <observer name="customer_checkout_observer" instance="Modzi\Pulseem\Observer\PulseemSubmitCheckoutData" />
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="customer_add_item_to_cart" instance="Modzi\Pulseem\Observer\PulseemAddToCartItem" />
+    </event>
+</config>
